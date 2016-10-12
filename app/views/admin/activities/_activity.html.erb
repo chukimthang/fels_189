@@ -1,0 +1,23 @@
+<li class="list-group-item">
+  <div class="div-admin-show-users">
+    <% if activity.start_lesson? %>
+      <%= t "show.start_lesson", name: activity.find_user(activity.user_id).name, 
+        id: activity.target_id, qty: activity.find_lesson.category_id %>
+      <h6 class="ago">
+        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+      </h6>
+    <% elsif activity.followed? %>
+      <%= t "show.followed", follower: activity.find_user(activity.user_id).name, 
+        followed: activity.find_user(activity.target_id).name %>
+      <h6 class="ago">
+        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+      </h6>
+    <% else %>
+      <%= t "show.unfollowed", follower: activity.find_user(activity.user_id).name, 
+        followed: activity.find_user(activity.target_id).name %>
+      <h6 class="ago">
+        <%= t "message.hours", hour: time_ago_in_words(activity.created_at) %>
+      </h6>
+    <% end %>
+  </div>
+</li>

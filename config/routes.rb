@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :words, only: [:index, :new, :create]
     resources :users, only: [:index, :show, :destroy]
     resources :words
+    resources :activities, only: [:index]
   end
   resources :users
   get "/about", to: "static_page#about"
